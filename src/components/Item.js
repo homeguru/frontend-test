@@ -5,8 +5,8 @@ import { useIntersectionObserver } from "../useIntersectionObserver"
 
 function Item(props) {
   const prop = props.state,
-        imageUri = `${prop.images[0] && prop.images[0].path}/portrait_fantastic.jpg` || 'https://via.placeholder.com/174x254',
-        date = moment(prop.dates.filter( i => i.type === "onsaleDate" )[0].date ).format('DD/MM/YYYY')
+        imageUri = `${prop.images[0] && prop.images[0].path}/portrait_fantastic.jpg`,
+        date = moment(prop.dates.filter( i => i.type === "onsaleDate" )[0].date ).format('MM/DD/YYYY')
 
   const elementRef = useRef(null)
   const [inView] = useIntersectionObserver(elementRef, {
@@ -21,7 +21,7 @@ function Item(props) {
       state: {
         detail: prop,
         date: date,
-        img: imageUri.replace('fantastic', 'uncanny') || 'https://via.placeholder.com/174x254'
+        img: imageUri.replace('fantastic', 'uncanny')
       }
     }}>
       <article className={`item item_asd CM__${prop.id}`} ref={elementRef}>

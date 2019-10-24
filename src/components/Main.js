@@ -5,23 +5,7 @@ import Item from './Item'
 function Main() {
   const [data, setItems] = useState([])
   const [config, setConfig] = useState({})
-  // eslint-disable-next-line
   const [isFetching, setIsFetching] = useState(false)
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  useEffect(() => {
-    if (!isFetching) return
-    fetchData(config.offset + 5, config.total)
-    setIsFetching(false)
-  }, [isFetching])
 
   function handleScroll() {
     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return
@@ -44,6 +28,21 @@ function Main() {
     setConfig(processedRes.data)
     setItems(uniq(newState, 'id'))
   }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    if (!isFetching) return
+    fetchData(config.offset + 5, config.total)
+    setIsFetching(false)
+  }, [isFetching, config])
 
   return (
     <div id="main" className="wrapper_CM">

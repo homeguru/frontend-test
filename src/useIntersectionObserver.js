@@ -4,7 +4,6 @@ export const useIntersectionObserver = (
   ref,
   { threshold, root, rootMargin }
 ) => {
-  // configure the state
   const [state, setState] = useState({
     inView: false,
     triggered: false,
@@ -13,9 +12,7 @@ export const useIntersectionObserver = (
 
   const observer = new IntersectionObserver(
     (entries, observerInstance) => {
-      // checks to see if the element is intersecting
       if (entries[0].intersectionRatio > 0) {
-        // if it is update the state, we set triggered as to not re-observe the element
         setTimeout(() => {
           setState({
             inView: true,
@@ -23,7 +20,6 @@ export const useIntersectionObserver = (
             entry: observerInstance,
           })
         }, 500)
-        // unobserve the element
         observerInstance.unobserve(ref.current)
       }
       return
@@ -36,7 +32,6 @@ export const useIntersectionObserver = (
   )
 
   useEffect(() => {
-    // check that the element exists, and has not already been triggered
     if (ref.current && !state.triggered) {
       observer.observe(ref.current)
     }
