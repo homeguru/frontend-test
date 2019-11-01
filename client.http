@@ -1,0 +1,3 @@
+GET https://gateway.marvel.com/v1/public/comics/22506?ts=1572471455&apikey=ea86a3a5289e6bb48d6783a639fcd882&hash=81c62c6d8d1d2ab88c3f1feb8c4bc278
+Content-Type: application/json
+Accept: application/json

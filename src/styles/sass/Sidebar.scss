@@ -1,0 +1,32 @@
+.main-sidebar{
+    transition: 0.3s ease;
+    top: 0px;
+    left: 0px;
+
+    &.inactive{
+        left: -185px;
+    }
+}
+
+.sidebar{
+    background-color: #2d3146;
+    width: 185px;
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+
+    .char-image{
+        width: 135px
+    }
+}
+
+.hide-btn{
+    transition: 0.2s ease;
+    background-color: #25293c;
+    width: 13px;
+
+    &:hover{
+        background-color: #20243a;
+    }
+}

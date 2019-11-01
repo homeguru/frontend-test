@@ -1,0 +1,28 @@
+.overlay-dps {
+  top: 0;
+  left: 0;
+  transition: 0.3s ease; }
+  .overlay-dps .main-details {
+    transition: 0.3s ease;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500px;
+    background-color: #4f4f5f; }
+    .overlay-dps .main-details .details-image {
+      width: 305px;
+      margin: 20px auto; }
+    .overlay-dps .main-details .image-select {
+      margin: 0 auto;
+      width: 80%; }
+      .overlay-dps .main-details .image-select::-webkit-scrollbar {
+        display: none; }
+  .overlay-dps .details-layer {
+    transition: 0.3s ease;
+    background-color: rgba(25, 25, 25, 0.83); }
+  .overlay-dps.inactive {
+    pointer-events: none; }
+    .overlay-dps.inactive .main-details {
+      right: -100%; }
+    .overlay-dps.inactive .details-layer {
+      opacity: 0; }

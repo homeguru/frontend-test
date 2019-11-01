@@ -1,0 +1,24 @@
+.main-comics-container {
+  width: 80%;
+  max-width: 1280px;
+  margin: 0 auto;
+  justify-content: center;
+  flex-wrap: wrap; }
+
+.ComicCell {
+  overflow: hidden;
+  max-width: 200px;
+  max-height: 300px;
+  margin: 20px 10px; }
+  .ComicCell:hover .comic-image {
+    width: 220px; }
+  .ComicCell .comic-image {
+    object-fit: cover;
+    overflow: hidden;
+    transition: 0.4s ease;
+    width: 200px; }
+  .ComicCell .comic-about {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #e62429; }
