@@ -25,4 +25,4 @@ Crie uma aplicação utilizando a [API da marvel](https://developer.marvel.com/)
 * O foco do teste é o código e sua organização, porém um bom layout ganha pontos.
 
 ### Prazo ###
-* 4 Dias.
+* 2 Dias.
