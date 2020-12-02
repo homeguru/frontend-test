@@ -54,12 +54,13 @@ export default () => {
         prefix: '/api'
     });
 
-    router.get('/character', async (ctx) => {
+    router.get('/characters', async (ctx) => {
         if (await ctx.cashed()) return;
         try {
             const response = await instance.get('/characters', {
                 params: {
-                    limit: 10
+                    limit: 10,
+                    ...ctx.request.query
                 }
             });
             ctx.body = response.data;
@@ -68,12 +69,13 @@ export default () => {
         }
     })
 
-    router.get('/comics/:character_id', async (ctx) => {
+    router.get('/comics', async (ctx) => {
         try {
             if (await ctx.cashed()) return;
             const response = await instance.get('/characters', {
                 params: {
-                    limit: 10
+                    limit: 10,
+                    ...ctx.request.query
                 }
             });
             ctx.body = response.data;

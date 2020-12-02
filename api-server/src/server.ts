@@ -93,7 +93,11 @@ export default (ServerConfig: Config) => {
             application.use(koaCash({
                 async get(key: string, maxAge: number): Promise<unknown | undefined> {
                     debugCache('Fetching item:', key, 'limit age is:', maxAge);
-                    return await cacheStorage.get(key);
+                    const cacheItem = await cacheStorage.get(key);
+
+                    debugCache(cacheItem ? 'Item found' : 'Item not found');
+
+                    return cacheItem;
                 },
                 async set(key: string, value: unknown, maxAge: number): Promise<void> {
                     debugCache('Caching item:', key, 'limit age is:', maxAge);
