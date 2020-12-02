@@ -1,9 +1,11 @@
+// Node Stuff
 import http2 from 'http2';
 import http from 'http';
 import {EventEmitter} from 'events';
 import debugInit from 'debug';
 import pem from 'pem';
 import fs from 'fs';
+import crypto from 'crypto';
 
 // KOA Server
 import Koa from 'koa';
@@ -13,6 +15,10 @@ import compress from 'koa-compress';
 import convert from 'koa-convert';
 import cors from 'koa-cors';
 import logger from 'koa-logger';
+
+// Cache
+import LRU from 'lru-cache'
+import koaCash from 'koa-cash'
 
 // interfaces
 import {ErrorLevels} from "./errorLevels";
@@ -27,6 +33,8 @@ export default (ServerConfig: Config) => {
     const developmentServer = environment === 'development' || environment === 'local';
 
     const debug = debugInit('kgg:server');
+    const debugCache = debugInit('kgg:server:cache');
+    const debugRouter = debugInit('kgg:server:router');
 
     const ServerEvents = new EventEmitter();
     let httpServer: http.Server;
@@ -40,8 +48,7 @@ export default (ServerConfig: Config) => {
 
     ServerEvents.on('server-ready', (port: number, secure: boolean) => {
         const server = secure ? 'HTTP/2' : 'HTTP';
-        debug(`${server} server is ready`);
-        console.log(`${server} server initialized properly into port ${port}`);
+        debug(`${server} server initialized properly into port ${port}`);
     });
 
     ServerEvents.on('instance-ready', () => {
@@ -53,12 +60,16 @@ export default (ServerConfig: Config) => {
         try {
             const application = new Koa();
             const defaultRouter = new Router();
+            const cacheStorage = new LRU({
+                maxAge: 300000, // 300s
+                max: 32
+            });
 
             // logger
             application.use(async (ctx, next) => {
                 await next();
                 const rt = ctx.response.get('X-Response-Time');
-                console.log(`${ctx.method} ${ctx.url} - ${rt}ms`);
+                debugRouter(`${ctx.method} ${ctx.url} - ${rt}`);
             });
 
             // x-response-time
@@ -66,7 +77,7 @@ export default (ServerConfig: Config) => {
                 const start = Date.now();
                 await next();
                 const ms = Date.now() - start;
-                ctx.set('X-Response-Time', `${ms}`);
+                ctx.set('X-Response-Time', `${ms}ms`);
             });
 
             application.use(async (ctx, next) => {
@@ -78,6 +89,23 @@ export default (ServerConfig: Config) => {
             application.use(convert(cors()));
             application.use(bodyparser());
             application.use(convert(logger()));
+
+            application.use(koaCash({
+                async get(key: string, maxAge: number): Promise<unknown | undefined> {
+                    debugCache('Fetching item:', key, 'limit age is:', maxAge);
+                    return await cacheStorage.get(key);
+                },
+                async set(key: string, value: unknown, maxAge: number): Promise<void> {
+                    debugCache('Caching item:', key, 'limit age is:', maxAge);
+                    cacheStorage.set(key, value, maxAge);
+                    return;
+                },
+                hash(ctx): string {
+                    const hash = crypto.createHash('sha1');
+                    hash.update(`${ctx.request.url}|${ctx.request.querystring}`);
+                    return `ROUTER-CACHE-${hash.digest('hex')};`;
+                }
+            }));
 
             application.use(ReverseProxy(ServerConfig.Proxies).routes());
 

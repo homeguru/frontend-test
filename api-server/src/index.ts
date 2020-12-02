@@ -5,7 +5,10 @@ import * as cluster from 'cluster';
 import server from './server';
 import {Config} from "./config.interface";
 import {ErrorLevels} from "./errorLevels";
+import dotenv from 'dotenv';
+import debugInit from 'debug'
 
+const debug = debugInit('kgg:main');
 const environment = process.env.NODE_ENV || 'development';
 const developmentServer = environment === 'development' || environment === 'local';
 
@@ -32,6 +35,17 @@ let ServerConfig: Config = {
     Proxies: []
 };
 
+// initialize server environment file
+const envFile = process.env.CONFIGPATH || path.join(__dirname, '..', '.env');
+if (fs.existsSync(envFile)) {
+    debug('Environment file is set up, attempting to load it...');
+    dotenv.config({
+        path: envFile,
+        encoding: 'utf-8'
+    })
+    debug('Environment variables are loaded');
+}
+
 // initialize user config
 const configPath = process.env.CONFIGPATH || path.join(__dirname, '..', 'server.config.json');
 if (fs.existsSync(configPath)) {
@@ -52,10 +66,12 @@ if (ServerConfig.MultiThreadEnabled) {
                 const worker = cluster.fork();
                 worker.on('message', (message) => {
                     console.log(`Cluster #${worker.id}>> ${message}`)
-                })
+                });
+
                 worker.on('online', () => {
                     console.log(`Cluster #${worker.id}>> Online`)
-                })
+                });
+
                 workers.push(worker);
             }
         } else {
