@@ -1,2 +1,2 @@
-export * from "./getCharacter";
-export * from "./getComics";
+export * from "./get.character";
+export * from "./get.comics";
