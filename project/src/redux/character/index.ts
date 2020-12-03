@@ -1,17 +1,31 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {Character} from "../../interfaces/character";
 
-const initialState: Partial<Character> = {};
+const initialState: Partial<{
+    Character: Character
+}> = {
+    Character: {
+        thumbnail: {
+            extension: "jpg",
+            path: "https://via.placeholder.com/128x128"
+        },
+        resourceURI: "",
+        name: "",
+        modified: new Date(),
+        id: 0,
+        description: ""
+    }
+};
 
-const characterSlice = createSlice({
+const slice = createSlice({
     name: 'character',
-    initialState: initialState,
+    initialState,
     reducers: {
-        updateCharacter(state, action: PayloadAction<Character>) {
-            state = action.payload;
+        setCharacter(state, action: PayloadAction<Character>) {
+            state.Character = action.payload;
         }
     }
 })
 
-export const { updateCharacter } = characterSlice.actions;
-export default characterSlice.reducer;
+export const { setCharacter } = slice.actions;
+export default slice.reducer;
