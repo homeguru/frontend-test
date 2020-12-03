@@ -69,10 +69,13 @@ export default () => {
         }
     })
 
-    router.get('/comics', async (ctx) => {
+    router.get('/comics/:charId', async (ctx) => {
         try {
             if (await ctx.cashed()) return;
-            const response = await instance.get('/characters', {
+
+            delete ctx.params.charId;
+
+            const response = await instance.get(`/characters/${ctx.params.charId}/comics`, {
                 params: {
                     limit: 10,
                     ...ctx.request.query
