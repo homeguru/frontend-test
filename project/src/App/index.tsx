@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Container from "./styles";
-import {getCharacter} from "../../services";
-import {Character} from "../../interfaces/character";
-import Loading from "../Loading";
-import Main from "../../pages/Main";
+import {getCharacter} from "../services";
+import {Character} from "../interfaces/character";
+import Loading from "../components/Loading";
+import Main from "../pages/Main";
 
 const ContainerFC: React.FC = ({ children }) => {
     const [isLoading, setLoading] = React.useState(true);
