@@ -6,7 +6,7 @@ const testItem = {
 };
 
 test('collection available cant be less than returned', () => {
-    const collection: Collection = {
+    const collection: Collection<unknown> = {
         returned: 5,
         items: [],
         available: 10,
@@ -17,7 +17,7 @@ test('collection available cant be less than returned', () => {
 })
 
 test('collection items cant be bigger than returned value', () => {
-    const collection: Collection = {
+    const collection: Collection<unknown> = {
         returned: 5,
         items: [testItem, testItem, testItem, testItem, testItem],
         available: 10,
