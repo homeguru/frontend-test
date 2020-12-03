@@ -1,4 +1,4 @@
-export interface marvelUrl {
+export interface MarvelUrl {
     type: string;
     url: string;
 }
