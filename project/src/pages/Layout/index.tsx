@@ -11,6 +11,9 @@ const Layout: React.FC = ({ children }) => {
             </p>
         </Header>
         <ContentContainer>
+            <section>
+                <h3>Data provided by Marvel. © 2020 <a target="_blank" href="http://marvel.com">MARVEL</a></h3>
+            </section>
             {children}
         </ContentContainer>
         <Footer />

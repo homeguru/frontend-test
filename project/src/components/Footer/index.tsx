@@ -1,7 +1,9 @@
 import * as React from 'react';
 
 const Footer: React.FC = () => {
-    return null;
+    return <div>
+        Data provided by Marvel. © 2020 MARVEL
+    </div>;
 }
 
 export default Footer;
