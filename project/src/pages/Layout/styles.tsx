@@ -6,5 +6,7 @@ export const Container = styled.div`
 `;
 
 export const ContentContainer = styled.main`
-  margin-top: 15px;
+  display: flex;
+  margin: 15px auto 0;
+  width: 95%;
 `;
