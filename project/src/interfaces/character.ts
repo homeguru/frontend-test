@@ -1,13 +1,13 @@
-import {marvelUrl} from "./marvel-url";
+ import {MarvelUrl} from "./marvel.url";
 import {Thumbnail} from "./thumbnail";
 import {Collection} from "./collection";
 
 export interface Character {
-    comics: Collection;
-    events: Collection;
-    series: Collection;
-    stories: Collection;
-    urls: marvelUrl[];
+    comics?: Collection<unknown>;
+    events?: Collection<unknown>;
+    series?: Collection<unknown>;
+    stories?: Collection<unknown>;
+    urls?: MarvelUrl[];
 
     description: string;
     id: number;
@@ -16,3 +16,5 @@ export interface Character {
     resourceURI: string;
     thumbnail: Thumbnail;
 }
+
+export default Character;
