@@ -73,9 +73,25 @@ export default () => {
         try {
             if (await ctx.cashed()) return;
 
-            delete ctx.params.charId;
+            // delete ctx.params.charId;
 
             const response = await instance.get(`/characters/${ctx.params.charId}/comics`, {
+                params: {
+                    limit: 10,
+                    ...ctx.request.query
+                }
+            });
+            ctx.body = response.data;
+        } catch (e) {
+            ctx.body = e;
+        }
+    })
+
+    router.get('/comic/:comicId', async (ctx) => {
+        try {
+            if (await ctx.cashed()) return;
+
+            const response = await instance.get(`/comics/${ctx.params.comicId}`, {
                 params: {
                     limit: 10,
                     ...ctx.request.query
