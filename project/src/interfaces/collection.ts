@@ -1,8 +1,6 @@
-import {CollectionItem} from "./collection.item";
-
-export interface Collection {
+export interface Collection<T> {
     available: number;
     collectionURI: string;
     returned: number;
-    items: CollectionItem[];
+    items: T[];
 }
