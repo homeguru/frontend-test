@@ -26,3 +26,15 @@ Crie uma aplicação utilizando a [API da marvel](https://developer.marvel.com/)
 
 ### Prazo ###
 * 2 Dias.
+
+
+### Como Executar ###
+* Faça o clone do repositório
+* Entre na pasta do projeto pelo terminal
+* navegue até a pasta do repositório e digite yarn para instalar as dependências do projeto.
+* depois digite yarn start
+
+
+### Observação ###
+* Peço desculpas por não entregar antes das 00:00 horas, ontém 13/01 passei por um procedimento cirurgico, extrai um ciso, e não consegui trabalhar pois estava sentindo muita dor. Acabei que coloquei meu despertador para as 01:00 de hoje e já sem dor, consegui finalizar o teste. desde já agradeço a compreenção. 
+
