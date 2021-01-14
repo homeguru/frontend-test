@@ -1,0 +1,67 @@
+@import './styles/theme.scss';
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color:#333;
+}
+
+.ml15 {
+  margin-left: 15px
+}
+.ml-15 {
+  margin-left: -15px
+}
+.mr15 {
+  margin-right: 15px
+}
+.mr-15 {
+  margin-right: -15px
+}
+
+.red-stripe-bg {
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(237,26,59,1) 50%, rgba(237,26,59,1) 100%);
+}
+
+div.body {
+  padding-top: 70px;
+  @media (min-width: 768px) {
+    padding-top: 60px;
+  }
+  min-height:100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+p, li {
+  color:#333;
+  font-weight: 300;
+  font-size: 16px;
+}
+span.label {
+  margin-left:2px;
+  margin-right:2px;
+}
+
+.pagination {
+  li {
+    a {
+      color: $brand-danger;
+      border:0px
+    }
+  }
+}
+
+.pagination > .active > a {
+  background-color: $brand-warning;
+  border-color: $brand-warning;
+  &:focus, &:hover {
+    background-color: $brand-warning;
+    border-color: $brand-warning;
+  }
+}

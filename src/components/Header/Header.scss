@@ -1,0 +1,35 @@
+@import "../../styles/theme.scss";
+
+.header {
+  background-color: $brand-danger;
+  max-height: 90px;
+  padding-bottom: 10px;
+  position: fixed;
+  width:100%;
+  z-index: 100;
+
+}
+
+.navtop {
+  text-align: left;
+  @media (min-width: 768px) {
+    margin-top: 15px;
+    text-align: right;
+  }
+  text-align: right;
+  a {
+    color:$brand-warning;
+    font-size: 18px;
+    font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-right:10px;
+    &:hover {
+      text-decoration: none;
+      color:lighten($brand-warning, 10%);
+    }
+  }
+}
+
+.logo {
+  width: 100px;
+  margin-top:10px;
+}
