@@ -1,0 +1,1 @@
+export const ON_MARVEL_HERO_SERIE_LOADED = 'on_marvel_hero_serie_loaded';
