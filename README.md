@@ -1,28 +1,24 @@
-## Desafio Frontend ##
-Crie uma aplicação utilizando a [API da marvel](https://developer.marvel.com/). Seguindo os requisitos abaixo.
+## Explicação arquitetura ##
+A arquitetura demonstrada é baseada em FDD(feature driven development), onde divido minha aplicação em modules e features.
+Na nossa aplicação da marvel, tivemos apenas 1 module (Main), que corresponde as funcionalidades principais do app.
+Tivemos 2 funcionalidades: Home e Welcome. A primeira lista todos os quadrinhos onde nossa querida Danvers aparece, e a segunda é uma tela de boas vindas da aplicação.
 
-## Telas ##
+App está integrado ao OneSignal e pode receber push notification a qualquer momento.
 
-### Tela de listagem dos quadrinhos da Capitã Marvel ###
-* Crie uma lista de todas as edições de quadrinhos em que a Capitã Marvel aparece;
-* Ordenar a lista por data de lançamento da edição;
-* Cada item da lista deve conter imagem, titulo e data de lançamento da edição;
-* Utilize Scroll infinito e LazyLoad para as imagens.
+O app está totalmente coberto pelo redux, persisto as comics na store, o app pode ser usado offline também, uma vez que tenha carregado qualquer comics;
 
-### Tela de Detalhe da Edição ###
-* Ao clicar em um item da lista, apresente os detalhes da edição;
-* Utilizar rota para poder compartilhar um item específico;
-* O detalhe deve conter todas informações disponibilizadas pela API.
+Uma aplicação desse porte não precisaria da metade da estrutura apresentada aqui, mas fiz questão de densenvolve-la para fins de demonstração da escalabilidade que o produto pode ter, fora divisões de camadas que um app deve ter para melhor manutenibilidade;
 
-### Requisitos ###
-* Utilize HTML5 + CSS3 com Flex;
-* Utilize ReactJS ou VueJS;
-* Não utilize Bootstrap ou outros frameworks do tipo;
-* Layout responsivo;
-* Descreva no README os passos para execução do seu projeto;
-* Deixe seu reposiório público para analise do Pull Request;
-* Crie um fork desse projeto e entregue via Pull Request;
-* O foco do teste é o código e sua organização, porém um bom layout ganha pontos.
+Decidi fazer o modelo carrousel para as comics para fugir um pouco da lista tradicional.
+As comics são carregadas de 20 em 20, ao chegar no final, carrega-se mais 20, cumprindo assim o requisito de lazyload.
 
-### Prazo ###
-* 2 Dias.
+ps: gostaria de ter feito algo mais bem acabado com animações e etc... mas pelo prazo de 2 dias, decidi fazer algo mais simples visualmente, mas com uma arquitetura bem sólida e construida. 
+
+## Paços para executar a aplicação  ##
+
+Ao baixar o codigo fonte, executar npm i ou yarn
+Como foi usado cli, abrir a pasta android no Android Studio e esperar o gradle fazer todas configurações necessárias
+Ao abrir o emulador ou dispositivo fisico, executar o comando react-native run-android no terminal, no nivel "/frontend-test"
+
+Se não conseguirem rodar o projeto por alguma falha no ambiente, gerei o APK do app na raiz do projeto, é só instalar em qualquer aparelho android que vcs conseguirão testar o app.
+Nome do apk front-end-test-marvel.apk
