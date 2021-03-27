@@ -4,9 +4,8 @@ import {
   View,
   StyleSheet,
   Image,
-  TouchableOpacity,
-  Animated,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 
 export default class ComicDetailsComponent extends React.Component {
@@ -92,7 +91,7 @@ export default class ComicDetailsComponent extends React.Component {
         <View style={styles.rightContentContainer}>
           {characters.map(character => {
             return (
-              <Text style={{color: 'black', fontSize: 16}}>
+              <Text key={character.name} style={{color: 'black', fontSize: 16}}>
                 {character.name}
               </Text>
             );
@@ -108,10 +107,10 @@ export default class ComicDetailsComponent extends React.Component {
       <>
         {this.leftContentDivider('Creators')}
         <View style={styles.letftContentContainer}>
-          {creators.map(character => {
+          {creators.map(creator => {
             return (
-              <Text style={{color: 'black', fontSize: 16}}>
-                {character.name}
+              <Text key={creator.name} style={{color: 'black', fontSize: 16}}>
+                {creator.name}
               </Text>
             );
           })}
@@ -123,6 +122,7 @@ export default class ComicDetailsComponent extends React.Component {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
+        <StatusBar backgroundColor={'#ec1d24'} animated />
         {this.header()}
         {this.description()}
         {this.characters()}

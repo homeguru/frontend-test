@@ -1,16 +1,30 @@
 import React, {Component} from 'react';
 import {format, parseISO} from 'date-fns';
-import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
+import FastImage from 'react-native-fast-image';
+import marvelLogo from '../../../../../../img/marvel-logo.png';
 
 export default class Comic extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.path = this.props.comic?.images[0]?.path;
+    this.extension = this.props.comic?.images[0]?.extension;
+    this.uriImage = `${this.path}.${this.extension}`;
+    FastImage.preload([
+      {
+        uri: this.uriImage,
+      },
+    ]);
   }
 
   header = () => {
-    const path = this.props.comic?.thumbnail?.path;
-    const extension = this.props.comic?.thumbnail?.extension;
-    const UriThumbnailImage = `${path}.${extension}`;
     return (
       <View style={styles.headerContainer}>
         <Text numberOfLines={1} style={styles.title}>
@@ -21,19 +35,21 @@ export default class Comic extends React.PureComponent {
   };
 
   content = () => {
-    const path = this.props.comic?.images[0]?.path;
-    const extension = this.props.comic?.images[0]?.extension;
-    const uriImage = `${path}.${extension}`;
-
     return (
       <View style={styles.contentContainer}>
-        {path ? (
-          <Image
-            source={{uri: uriImage}}
-            style={{flex: 1, resizeMode: 'contain'}}
+        {this.path ? (
+          <FastImage
+            source={{uri: this.uriImage}}
+            style={{width: 325, height: 500}}
+            resizeMode={FastImage.resizeMode.contain}
           />
         ) : (
-          <View style={{flex: 1, backgroundColor: '#ec1d24'}}></View>
+          <View style={styles.redBanner}>
+            <Image
+              source={marvelLogo}
+              style={{resizeMode: 'center', width: 200, height: 100}}
+            />
+          </View>
         )}
       </View>
     );
@@ -78,6 +94,14 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
 
     alignItems: 'center',
+  },
+  redBanner: {
+    flex: 1,
+    backgroundColor: '#ec1d24',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 325,
+    height: 500,
   },
   title: {
     color: '#FFF',

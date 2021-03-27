@@ -5,6 +5,7 @@ import {
   View,
   ActivityIndicator,
   StyleSheet,
+  StatusBar,
 } from 'react-native';
 import {Comic, ComicFailure} from './high-order-components';
 
@@ -31,19 +32,19 @@ export default class IndexComponent extends Component {
   render() {
     const {
       isLoading,
-      isLoaded,
       failure,
       comics,
       capitaMarvel,
       loadMoreComicsByCharacterAppearance,
     } = this.props;
 
-    if (failure) return <ComicFailure />;
+    if (comics.length == 0 && failure) return <ComicFailure {...this.props} />;
 
     if (isLoading) return this.renderActivityIndicator();
 
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor={'#2f2e96'} animated />
         <FlatList
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.flatListContainer}
@@ -54,6 +55,8 @@ export default class IndexComponent extends Component {
           onEndReached={() => {
             loadMoreComicsByCharacterAppearance(capitaMarvel.id);
           }}
+          initialNumToRender={5}
+          maxToRenderPerBatch={5}
         />
       </View>
     );

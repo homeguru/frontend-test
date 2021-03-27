@@ -21,10 +21,11 @@ export default class Navigator extends React.Component {
   render() {
     const MainNavigator = createSwitchNavigator(
       {
-        Auth: {screen: MainModule.HomeFeature.config.Navigator},
+        Home: {screen: MainModule.HomeFeature.config.Navigator},
+        Welcome: {screen: MainModule.WelcomeFeature.config.Navigator},
       },
       {
-        initialRouteName: 'Auth',
+        initialRouteName: 'Welcome',
         lazyLoad: true,
         swipeEnabled: false,
         defaultNavigationOptions: {tabBarVisible: false},

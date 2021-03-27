@@ -12,7 +12,6 @@ export const getComicsByCharacterAppearance = async (
   const timestamp = 'thesoer';
   const hash = md5.create();
   hash.update(`${timestamp}${PRIVATE_KEY}${PUBLIC_KEY}`);
-  console.log(characterId);
   return await fetch(
     `${BASE_URL}/public/comics?offset=${offset}&sharedAppearances=${characterId}&orderBy=onsaleDate&ts=thesoer&apikey=${PUBLIC_KEY}&hash=${hash}`,
   );
