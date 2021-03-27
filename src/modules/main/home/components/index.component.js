@@ -55,8 +55,6 @@ export default class IndexComponent extends Component {
           onEndReached={() => {
             loadMoreComicsByCharacterAppearance(capitaMarvel.id);
           }}
-          initialNumToRender={5}
-          maxToRenderPerBatch={5}
         />
       </View>
     );

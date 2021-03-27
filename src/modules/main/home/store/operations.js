@@ -32,7 +32,7 @@ export const loadMoreComicsByCharacterAppearance = characterId => dispatch => {
     const quantityOfOldComics = oldComics.length;
 
     dispatch(actions.getComicsAction.loadMore());
-    if (oldComicsData.total === quantityOfOldComics) {
+    if (oldComicsData?.total === quantityOfOldComics) {
       const err = {message: 'Quantidade total de quadrinhos ja alcançada'};
       dispatch(actions.getComicsAction.loadMorefailure(err));
       return reject(err);

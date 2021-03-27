@@ -17,11 +17,6 @@ export default class Comic extends React.PureComponent {
     this.path = this.props.comic?.images[0]?.path;
     this.extension = this.props.comic?.images[0]?.extension;
     this.uriImage = `${this.path}.${this.extension}`;
-    FastImage.preload([
-      {
-        uri: this.uriImage,
-      },
-    ]);
   }
 
   header = () => {

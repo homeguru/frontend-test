@@ -7,7 +7,7 @@ import {
   ScrollView,
   StatusBar,
 } from 'react-native';
-
+import marvelLogo from '../../../../img/marvel-logo.png';
 export default class ComicDetailsComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +28,12 @@ export default class ComicDetailsComponent extends React.Component {
             style={{flex: 1, resizeMode: 'contain'}}
           />
         ) : (
-          <View style={{flex: 1, backgroundColor: '#ec1d24'}}></View>
+          <View style={styles.redBanner}>
+            <Image
+              source={marvelLogo}
+              style={{resizeMode: 'center', width: 200, height: 100}}
+            />
+          </View>
         )}
       </View>
     );
@@ -152,6 +157,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  redBanner: {
+    flex: 1,
+    backgroundColor: '#ec1d24',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 325,
+    height: 500,
   },
   imageContainer: {
     height: 400,
