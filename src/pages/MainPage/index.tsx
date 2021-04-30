@@ -33,17 +33,28 @@ const MainPage: React.FC = () => {
   })
  
   useEffect(()=>{
+    const loadCharacters = () => {
+        return api.get(`v1/public/characters?ts=${ts}&apikey=${apiKey}&hash=${hashMd5}&nameStartsWith=Captain%20Marvel`)
+        .then( res => {
+          let arrResponse = [...res.data.data.results]
+          let arr:Array<string> = []
+          arrResponse.map(item => {return arr.push(item.id)})
+          setIdsCharacters(arr) 
+        })
+    }
     loadCharacters()
   },[])
 
   useEffect(()=>{
     if(idsCharacters.length === 0){return}
     loadComics()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[idsCharacters])
 
   useEffect(()=>{
     if(currentIdCharacters === 0){return}
     loadComics()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[currentIdCharacters])
 
   const intersectionObserver = new IntersectionObserver( (entries) => {
@@ -56,11 +67,8 @@ const MainPage: React.FC = () => {
     return () => {
       intersectionObserver.disconnect()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
-
-  useEffect(()=>{
-    console.log(comicsCaptainMarvel)
-  },[comicsCaptainMarvel])
 
   useEffect(()=>{
      if(scroolRadio > 0 && comicsCaptainMarvel.length !== 0) {
@@ -69,28 +77,21 @@ const MainPage: React.FC = () => {
       }}
       loadComics()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[scroolRadio])
 
-  async function loadCharacters(){
-    const characters = await api.get(`v1/public/characters?ts=${ts}&apikey=${apiKey}&hash=${hashMd5}&nameStartsWith=Captain%20Marvel`)
-    let arrResponse = [...characters.data.data.results]
-    let arr:Array<string> = []
-    arrResponse.map(item => {return arr.push(item.id)})
-    setIdsCharacters(arr) 
-  }
-
+  
   async function loadComics(){
     if(loadedAllComics){return}
     setLoadinng(true)
     let id =  idsCharacters[currentIdCharacters]
-    api.get(`v1/public/characters/${id}/comics?orderBy=onsaleDate&limit=12&offset=${totalCarregados}&ts=${ts}&apikey=${apiKey}&hash=${hashMd5}`)
+    api.get(`v1/public/characters/${id}/comics?orderBy=onsaleDate&limit=24&offset=${totalCarregados}&ts=${ts}&apikey=${apiKey}&hash=${hashMd5}`)
     .then(i =>{
       setTotalComics(i.data.data.total)
       if (totalCarregados === 0) {
         setTotalCarregados(totalCarregados + 12)
         setComicsCaptainMarvel([...i.data.data.results])
         setLoadinng(false)
-        return
       }
       setComicsCaptainMarvel([...comicsCaptainMarvel, ...i.data.data.results])
       setTotalCarregados(totalCarregados + 12)
@@ -143,7 +144,7 @@ const MainPage: React.FC = () => {
                 <hr/>
                 <h2><b>Link:</b></h2> 
                 <Row>
-                  <a target="_blank" href={infoComic.urls[0].url}>Ver no site da Marvel</a>
+                  <a href={infoComic.urls[0].url}>Ver no site da Marvel</a>
                 </Row>
               </div>
             </RowBetween>
@@ -183,7 +184,6 @@ const MainPage: React.FC = () => {
               <Suspense fallback={<FaSpinner className="spinner"/>}>
                 <Image url={comic.thumbnail.path} /> 
               </Suspense>
-              {/* <img src={`${comic.thumbnail.path}.jpg`} alt={comic.id}/> */}
               <div className="date">
                 <p>Lançamento:&nbsp;  
                   {

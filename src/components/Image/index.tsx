@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React from 'react';
 
 interface propsUrl {
   url: string
