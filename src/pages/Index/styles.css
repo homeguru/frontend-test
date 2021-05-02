@@ -1,0 +1,18 @@
+#container{
+    display: flex;
+    flex-grow: 1;
+    background-color: #fff;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+.containerComics{
+    display: flex;
+    flex-grow: 1;
+    background-color: #fff;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 20px 5% 0 5%;
+}

@@ -1,0 +1,104 @@
+#container{
+    display: flex;
+    flex-grow: 1;
+    background-color: #fff;
+    color: #fff;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.containerComic{
+    display: flex;
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 50px 5% 30px 5%;
+}
+
+.containerMore{
+    display: flex;
+    flex-grow: 1;
+    background-color:#202020;
+    color:gainsboro;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 50px 5% 0 5%;
+}
+
+.containerData{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.comicCover{
+    width:25%;
+    max-height: 32vw;
+    margin: 0 4% 0 0;
+    object-fit: cover;
+}
+
+.comicTitle{
+    font-weight: 800;
+    font-size: 26px;
+    margin: 0 0 20px 0;
+    letter-spacing: 0.5px;
+}
+
+.subTitle{
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+}
+
+.content{
+    font-size: 16px;
+    margin: 0 0 20px 0;
+}
+
+.rowCreators{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.columnCreators{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.rowMore{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.columnMore{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+}
+
+.description{
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    width: 50%;
+}
+
+h4{
+    margin: 50px 0 10px 0;
+}
+
+.contentMore{
+    font-size: 14px;
+}
