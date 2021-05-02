@@ -1,0 +1,41 @@
+.comic{
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    padding: 1%;
+    cursor: pointer;
+}
+
+.thumbnail{
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 1px 8px 15px -1px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 1px 8px 15px -1px rgba(0,0,0,0);
+    transition: transform .2s;
+}
+
+.comic:hover > .thumbnail {
+    transform: scale(1.1);
+}
+
+.comic:hover > .title {
+    color: red;
+    margin: 30px 0 0 0;
+}
+
+.comic:hover > .makers {
+    margin: 0 0 10px 0;
+}
+
+
+.title{
+    color: #000;
+    margin: 20px 0 0 0;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.makers{
+    color: #000;
+    margin: 0 0 20px 0;
+    font-size: 12px;
+    font-weight: 400;
+}
