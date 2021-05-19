@@ -7,7 +7,6 @@ Crie uma aplicação utilizando a [API da marvel](https://developer.marvel.com/)
 * Crie uma lista de todas as edições de quadrinhos em que a Capitã Marvel aparece;
 * Ordenar a lista por data de lançamento da edição;
 * Cada item da lista deve conter imagem, titulo e data de lançamento da edição;
-* Utilize Scroll infinito e LazyLoad para as imagens.
 
 ### Tela de Detalhe da Edição ###
 * Ao clicar em um item da lista, apresente os detalhes da edição;
