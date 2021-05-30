@@ -1,0 +1,171 @@
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container .logo-cmarvel {
+  width: 100%;
+  max-width: 500px;
+}
+
+.container .loadinng {
+  color: #322e37;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 20px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  background: #fe9000;
+  box-shadow: 1px 1px 10px #000;
+}
+
+.header {
+  display: flex;
+  min-width: 100vw;
+  max-width: 1200px;
+  padding: 30px;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .tittle {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.header .description {
+  color: #fe9000;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.header .contentImgUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header .contentImgUser p {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.header .contentImgUser .phone {
+  color: #999;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.header .imgUser {
+  max-width: 100px;
+  max-height: 100px;
+  margin-bottom: 5px;
+  border-radius: 100%;
+}
+
+@media (max-width: 521px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .header .description {
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .header .contentImgUser {
+    margin-top: 20px;
+  }
+}
+
+.rowLeft {
+  display: flex;
+  justify-content: flex-start;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contentCards {
+  display: flex;
+  flex: 1;
+  min-width: 100vw;
+  height: max-content;
+  padding: 20px;
+  background: #322e37;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+  color: #999;
+  flex: 1;
+  max-height: 120px;
+  margin: 10px;
+  border-radius: 10px;
+  background: #3f3b46;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card .contenTittle {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 20px;
+  min-height: 70px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.card .tittle {
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card .dateLaunch {
+  color: #999;
+  font-size: 15px;
+}
+
+.card .iconLaunch {
+  color: #fe9000;
+  margin-right: 10px;
+}
+
+.card .card h2 {
+  font-size: 20px;
+}
+
+.card img {
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  margin: 10px;
+  border-radius: 100%;
+  object-fit: cover;
+  box-shadow: 0px 0px 12px #222;
+}

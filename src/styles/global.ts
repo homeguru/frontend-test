@@ -11,13 +11,15 @@ export default createGlobalStyle`
     font-size: 62.5%;
   }
   body {
-    background-color: #444;
-    background-image: linear-gradient(to bottom right, #111, #444);
+    background: #292830;
     -webkit-font-smoothing: antialiased;
   }
   body, input, button {
     font-family: 'Roboto','Arial', sans-serif;
     font-size: 16px;
+  }
+  div{
+    box-sizing: border-box;
   }
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 500;
