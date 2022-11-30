@@ -1,0 +1,46 @@
+@import '../../styles/theme.scss';
+
+.card-wrapper {
+
+  .card-inner {
+    border: 1px solid #eee;
+    //border-image: url('/sketchy-border.png') 2 repeat;
+    border-width: 1px;
+    margin-top:15px;
+    padding: 0px;
+    height:230px;
+    width:230px;
+
+    .card-img {
+      height: 135px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: border 200ms ease-out;
+      border: 1px solid rgba(255,255,255, 0.5);
+    }
+
+    .card-title {
+      margin-top:10px;
+      font-size: 12px;
+      font-weight: bold;
+      color: $brand-danger;
+      padding:0 10px;
+      margin-bottom: auto;
+    }
+    .card-description {
+      font-size: 10px;
+      font-weight: 300;
+      color: #787878;
+      padding:0 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: 45px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+
+    }
+
+  }
+}
